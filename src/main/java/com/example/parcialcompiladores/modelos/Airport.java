@@ -6,13 +6,11 @@ import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
-import java.util.UUID;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity()
-public class Celebrity {
+public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Getter
@@ -25,13 +23,12 @@ public class Celebrity {
     @NotNull
     @Getter
     @Setter
-    private String profession;
+    private String location;
+    @NotNull
     @Getter
     @Setter
-    private double netWorth;
-    @Getter
+    private int capacity;
     @Setter
-    private boolean suspicious = false;
-
-
+    @Getter
+    private String owners = "Sofia and Natalia the best owners";
 }
