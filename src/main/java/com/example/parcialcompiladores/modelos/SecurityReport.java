@@ -13,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity()
-public class Celebrity {
+public class SecurityReport {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Getter
@@ -22,25 +22,18 @@ public class Celebrity {
     @NotNull
     @Getter
     @Setter
-    private String name;
+    private String reported_by;
     @NotNull
     @Getter
     @Setter
-    private String profession;
+    private String description;
     @Getter
     @Setter
-    private double netWorth;
-    @Getter
-    @Setter
-    private boolean suspicious = false;
+    private boolean is_resolved=false;
 
-    @OneToMany(mappedBy = "owner_id", cascade = CascadeType.ALL, orphanRemoval = false)
+    @ManyToOne(fetch = FetchType.LAZY) //un vuelo puede tener varios problemas
+    @JoinColumn(name = "Flight_id", nullable = false) // Clave foránea
     @JsonIgnore
-    private List<PrivateJet> jets;
-
-    @OneToMany(mappedBy = "celebrity_id", cascade = CascadeType.ALL, orphanRemoval = false)
-    @JsonIgnore
-    private List<Flight> vuelosCelebridad;
-
+    private Flight flight_id;
 
 }

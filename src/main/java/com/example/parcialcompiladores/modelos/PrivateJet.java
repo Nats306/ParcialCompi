@@ -13,34 +13,23 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity()
-public class Celebrity {
+public class PrivateJet {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Getter
     @Setter
-    private String id;
+    private String model;
     @NotNull
     @Getter
     @Setter
-    private String name;
-    @NotNull
-    @Getter
-    @Setter
-    private String profession;
-    @Getter
-    @Setter
-    private double netWorth;
-    @Getter
-    @Setter
-    private boolean suspicious = false;
+    private Integer capacity;
 
-    @OneToMany(mappedBy = "owner_id", cascade = CascadeType.ALL, orphanRemoval = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id", nullable = false) // Clave foránea
     @JsonIgnore
-    private List<PrivateJet> jets;
+    private Celebrity owner_id;
 
-    @OneToMany(mappedBy = "celebrity_id", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "jet_id", cascade = CascadeType.ALL, orphanRemoval = false)
     @JsonIgnore
-    private List<Flight> vuelosCelebridad;
-
-
+    private List<Flight> vuelosAvion;
 }
