@@ -25,7 +25,7 @@ public class Airport {
     @NotNull
     @Getter
     @Setter
-    private int capacity;
+    private Integer capacity;
     @Setter
     @Getter
     private String owners = "Sofia and Natalia the best owners";

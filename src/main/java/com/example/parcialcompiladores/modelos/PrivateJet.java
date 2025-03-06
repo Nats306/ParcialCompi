@@ -18,6 +18,10 @@ public class PrivateJet {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Getter
     @Setter
+    private String id;
+    @NotNull
+    @Getter
+    @Setter
     private String model;
     @NotNull
     @Getter
