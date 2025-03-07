@@ -2,8 +2,8 @@ package com.example.parcialcompiladores.modelos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 
 @Data
 @AllArgsConstructor
@@ -15,11 +15,11 @@ public class SecurityReport {
     @Getter
     @Setter
     private String id;
-    @NotNull
+    @NotBlank(message = "Se debe poner quien hizo el reporte")
     @Getter
     @Setter
     private String reported_by;
-    @NotNull
+    @NotBlank(message = "La descripción no puede ser nula")
     @Getter
     @Setter
     private String description;

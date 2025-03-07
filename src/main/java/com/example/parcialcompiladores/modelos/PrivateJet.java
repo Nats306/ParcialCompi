@@ -2,12 +2,10 @@ package com.example.parcialcompiladores.modelos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -19,11 +17,11 @@ public class PrivateJet {
     @Getter
     @Setter
     private String id;
-    @NotNull
+    @NotBlank(message = "El modelo del jet privado no puese estar vacío")
     @Getter
     @Setter
     private String model;
-    @NotNull
+    @NotBlank(message = "La capacidad del jet privado no puede ser nula")
     @Getter
     @Setter
     private Integer capacity;

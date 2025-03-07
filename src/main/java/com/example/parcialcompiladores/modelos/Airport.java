@@ -1,8 +1,8 @@
 package com.example.parcialcompiladores.modelos;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 
 @Data
 @AllArgsConstructor
@@ -14,15 +14,15 @@ public class Airport {
     @Getter
     @Setter
     private String id;
-    @NotNull
+    @NotBlank(message = "El nombre no puede estar vacío")
     @Getter
     @Setter
     private String name;
-    @NotNull
+    @NotBlank(message = "La locación no puede estar vacía")
     @Getter
     @Setter
     private String location;
-    @NotNull
+    @NotBlank(message = "La capacidad no puede ser nula")
     @Getter
     @Setter
     private Integer capacity;

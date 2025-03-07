@@ -2,12 +2,10 @@ package com.example.parcialcompiladores.modelos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -19,11 +17,16 @@ public class Celebrity {
     @Getter
     @Setter
     private String id;
-    @NotNull
+    @NotBlank(message = "El tipo de id no puede estar vacío")
+    @Getter
+    @Setter
+    @Enumerated(EnumType.STRING)
+    private TipoID tipoId;
+    @NotBlank(message = "El nombre no puede estar vacío")
     @Getter
     @Setter
     private String name;
-    @NotNull
+    @NotBlank(message = "La profesion no puede estar vacía")
     @Getter
     @Setter
     private String profession;
@@ -43,4 +46,9 @@ public class Celebrity {
     private List<Flight> vuelosCelebridad;
 
 
+
+}
+
+enum TipoID{
+    CC, TI, CE, PASAPORTE;
 }

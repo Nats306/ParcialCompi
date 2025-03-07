@@ -2,12 +2,10 @@ package com.example.parcialcompiladores.modelos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -20,19 +18,19 @@ public class Flight {
     @Getter
     @Setter
     private String id;
-    @NotNull
+    @NotBlank(message = "El aeropuerto de despegada no puede estar vació")
     @Getter
     @Setter
     private String departure_airport;
-    @NotNull
+    @NotBlank(message = "El aeropuerto destino no puede estar vacío")
     @Getter
     @Setter
     private String arrival_airport;
-    @NotNull
+    @NotBlank(message = "El tiempo de salida no puede estar vacío")
     @Getter
     @Setter
     private String departure_time;
-    @NotNull
+    @NotBlank(message = "El tiempo de llegada no puede estar vacío")
     @Getter
     @Setter
     private String arrival_time;
@@ -52,4 +50,11 @@ public class Flight {
     @JoinColumn(name = "jet_id", nullable = false)
     @JsonIgnore
     private PrivateJet jet_id;
+
+    @Enumerated(EnumType.STRING)
+    private Purpose purpose;
+}
+
+enum Purpose{
+    Business, Vacation, Suspicious;
 }
