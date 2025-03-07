@@ -4,8 +4,10 @@ import com.example.parcialcompiladores.modelos.Celebrity;
 import com.example.parcialcompiladores.repositories.ICelebrityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
+@Validated
 public class CelebrityService implements IServiceCelebrity {
     @Autowired
     private ICelebrityRepository celebrityRepository;

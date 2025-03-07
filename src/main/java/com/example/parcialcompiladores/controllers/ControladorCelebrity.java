@@ -16,7 +16,7 @@ public class ControladorCelebrity {
         return this.serviceCelebrity.getCelebrityById(id);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/")
     public void add(@RequestBody Celebrity celebrity) {
         this.serviceCelebrity.addCelebrity(celebrity);
     }
