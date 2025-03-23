@@ -1,6 +1,6 @@
 package com.example.parcialcompiladores.DTO;
 
-// import com.example.parcialcompiladores.modelos.Purpose;
+import com.example.parcialcompiladores.modelos.Purpose;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,5 +19,5 @@ public class FlightDTO {
     private String arrivalTime;
     private Long celebrityId;
     private Long jetId;
-    // private Purpose purpose; falta añadir esto, no se como
+    private Purpose purpose;
 }

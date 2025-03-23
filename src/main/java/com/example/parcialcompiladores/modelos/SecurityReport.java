@@ -25,7 +25,7 @@ public class SecurityReport {
     private String description;
     @Getter
     @Setter
-    private boolean is_resolved=false;
+    private boolean resolved=false;
 
     @ManyToOne(fetch = FetchType.LAZY) //un vuelo puede tener varios problemas
     @JoinColumn(name = "Flight_id", nullable = false) // Clave foránea

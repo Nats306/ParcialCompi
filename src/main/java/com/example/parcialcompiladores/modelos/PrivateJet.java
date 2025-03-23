@@ -2,6 +2,7 @@ package com.example.parcialcompiladores.modelos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -22,6 +23,7 @@ public class PrivateJet {
     @Setter
     private String model;
     @NotBlank(message = "La capacidad del jet privado no puede ser nula")
+    @Min(value = 0, message = "La capacidad no puede ser negativa")
     @Getter
     @Setter
     private Integer capacity;

@@ -54,7 +54,3 @@ public class Flight {
     @Enumerated(EnumType.STRING)
     private Purpose purpose;
 }
-
-enum Purpose{
-    Business, Vacation, Suspicious;
-}

@@ -21,15 +21,15 @@ public class SecurityReportService implements IServiceSecurityReport{
 
     @Override
     public List<SecurityReport> getReportByUnresolved() {
-        return this.securityReportRepository.findByIs_resolved(false);
+        return this.securityReportRepository.findByResolved(false);
     }
 
     @Override
     public void changeStatusReport(String id) {
         SecurityReport previousReport = this.securityReportRepository.findById(id).orElse(null);
         if(previousReport != null){
-            previousReport.set_resolved(true);
-            //this.privateJetRepository.save(previousReport);donde tengo que poner para que savee
+            previousReport.setResolved(true);
+            //this.privateJetRepository.save(previousReport);//donde tengo que poner para que savee
         }
     }
 }

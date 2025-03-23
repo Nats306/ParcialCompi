@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ISecurityReportRepository extends JpaRepository<SecurityReport, String> {
 
-    public List<SecurityReport> findByIs_resolved(boolean isResolved);
+    public List<SecurityReport> findByResolved(boolean resolved);
 }

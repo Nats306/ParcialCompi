@@ -2,6 +2,7 @@ package com.example.parcialcompiladores.modelos;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -30,6 +31,7 @@ public class Celebrity {
     @Getter
     @Setter
     private String profession;
+    @Min(value = 0, message = "El capital neto no puede ser negativo")
     @Getter
     @Setter
     private double netWorth;
@@ -44,11 +46,4 @@ public class Celebrity {
     @OneToMany(mappedBy = "celebrity_id", cascade = CascadeType.ALL, orphanRemoval = false)
     @JsonIgnore
     private List<Flight> vuelosCelebridad;
-
-
-
-}
-
-enum TipoID{
-    CC, TI, CE, PASAPORTE;
 }

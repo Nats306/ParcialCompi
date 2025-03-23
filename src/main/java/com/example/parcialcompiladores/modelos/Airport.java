@@ -1,6 +1,7 @@
 package com.example.parcialcompiladores.modelos;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -23,6 +24,7 @@ public class Airport {
     @Setter
     private String location;
     @NotBlank(message = "La capacidad no puede ser nula")
+    @Min(value = 0, message = "La capacidad no puede ser negativa")
     @Getter
     @Setter
     private Integer capacity;
