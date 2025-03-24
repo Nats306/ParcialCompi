@@ -9,6 +9,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity()
+@Table(name= "aeropuertos")
+
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity()
-
+@Table(name= "vuelos")
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity()
+@Table(name= "celebridades")
 public class Celebrity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

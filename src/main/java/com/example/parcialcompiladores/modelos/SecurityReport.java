@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity()
+@Table(name= "reportesdeSeguridad")
 public class SecurityReport {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
