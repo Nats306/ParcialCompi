@@ -1,6 +1,7 @@
 package com.example.parcialcompiladores.controllers;
 
 import com.example.parcialcompiladores.modelos.Airport;
+import com.example.parcialcompiladores.modelos.Celebrity;
 import com.example.parcialcompiladores.service.IServiceAirport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,7 @@ public class ControladorAirport {
         return this.serviceAirport.getAirportById(id);
     }
 
+    @PostMapping("/")
+    public void add(@RequestBody Airport airport) {this.serviceAirport.addAirport(airport);}
 }
 

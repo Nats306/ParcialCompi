@@ -2,13 +2,14 @@ package com.example.parcialcompiladores.service;
 
 import com.example.parcialcompiladores.modelos.Flight;
 import com.example.parcialcompiladores.repositories.IFlightRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class FlightService implements IServiceFlights{
-
+    @Autowired
     private IFlightRepository flightRepository;
     @Override
     public void addFlight(Flight flight) {

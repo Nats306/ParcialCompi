@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class Celebrity {
     @Getter
     @Setter
     private String id;
-    @NotBlank(message = "El tipo de id no puede estar vacío")
+    @NotNull(message = "El tipo de id no puede ser nulo")
     @Getter
     @Setter
     @Enumerated(EnumType.STRING)

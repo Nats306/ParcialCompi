@@ -15,6 +15,11 @@ public class AirportService implements IServiceAirport {
     private IAirportRepository airportRepository;
 
     @Override
+    public void addAirport(Airport airport) {
+        this.airportRepository.save(airport);
+    }
+
+    @Override
     public List<Airport> getAllAirports(){
         return airportRepository.findAll();
     }

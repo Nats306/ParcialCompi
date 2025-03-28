@@ -31,7 +31,7 @@ public class CelebrityService implements IServiceCelebrity {
             previousCelebrity.setSuspicious(updatedCelebrity.isSuspicious());
         }
 
-        this.celebrityRepository.save(updatedCelebrity);
+        this.celebrityRepository.save(previousCelebrity);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class FlightDTO {
     private String arrivalAirport;
     private String departureTime;
     private String arrivalTime;
-    private Long celebrityId;
-    private Long jetId;
-    private Purpose purpose;
+    private String celebrityId;
+    private String jetId;
+    private String purpose;
 }

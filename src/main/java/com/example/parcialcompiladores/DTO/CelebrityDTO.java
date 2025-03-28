@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CelebrityDTO {
     private String id;
-    private TipoID tipoId;  //igual que en flight, no me deja manejarlo con ese enum
+    private String tipoId;  //igual que en flight, no me deja manejarlo con ese enum
     private String name;
     private String profession;
     private double netWorth;
