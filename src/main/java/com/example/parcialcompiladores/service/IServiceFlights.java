@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface IServiceFlights {
     public void addFlight(@Valid FlightDTO flight);
     public Optional<FlightDTO> getFlightByID(String id);
-    public List<FlightDTO> getFlightSuspicius();
+    public List<FlightDTO> getFlightSuspicious();
     public void cancelFlight(String id);
 
 }

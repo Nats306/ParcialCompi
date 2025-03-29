@@ -42,6 +42,14 @@ public class FlightService implements IServiceFlights{
     @Override
     public void addFlight(@Valid FlightDTO flightDTO) {
         Flight flight = new Flight();
+        if (flightDTO.getCelebrityId() == null) {
+            throw new IllegalArgumentException("Celebrity ID cannot be null.");
+        }
+
+        if (flightDTO.getJetId() == null) {
+            throw new IllegalArgumentException("Jet ID cannot be null.");
+        }
+
         Celebrity CelebrityVuelo= celebrityRepository.findById(flightDTO.getCelebrityId()).get();
         PrivateJet privateJet = privateJetRepository.findById(flightDTO.getJetId()).get();
 
@@ -63,7 +71,7 @@ public class FlightService implements IServiceFlights{
     }
 
     @Override
-    public List<FlightDTO> getFlightSuspicius() {
+    public List<FlightDTO> getFlightSuspicious() {
 
         return flightRepository.findByPurpose(Purpose.Suspicious).
                 stream().map(this::convertToFlightDTO).collect(Collectors.toList());

@@ -33,7 +33,7 @@ public class PrivateJet {
     @JsonIgnore
     private Celebrity owner;
 
-    @OneToMany(mappedBy = "jet_id", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "jet", cascade = CascadeType.ALL, orphanRemoval = false)
     @JsonIgnore
-    private List<Flight> vuelosAvion;
+    private List<Flight> flights;
 }

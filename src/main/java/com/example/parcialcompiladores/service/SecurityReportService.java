@@ -55,6 +55,7 @@ public class SecurityReportService implements IServiceSecurityReport{
         SecurityReport previousReport = this.securityReportRepository.findById(id).orElse(null);
         if(previousReport != null){
             previousReport.setResolved(true);
+            securityReportRepository.save(previousReport);
         }
     }
 }

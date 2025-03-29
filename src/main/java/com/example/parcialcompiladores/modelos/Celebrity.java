@@ -38,11 +38,11 @@ public class Celebrity {
     @Setter
     private boolean suspicious = false;
 
-    @OneToMany(mappedBy = "owner_id", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = false)
     @JsonIgnore
     private List<PrivateJet> jets;
 
-    @OneToMany(mappedBy = "celebrity_id", cascade = CascadeType.ALL, orphanRemoval = false)
+    @OneToMany(mappedBy = "celebrity", cascade = CascadeType.ALL, orphanRemoval = false)
     @JsonIgnore
-    private List<Flight> vuelosCelebridad;
+    private List<Flight> flights;
 }

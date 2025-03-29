@@ -27,7 +27,7 @@ public class SecurityReport {
     private boolean resolved=false;
 
     @ManyToOne(fetch = FetchType.LAZY) //un vuelo puede tener varios problemas
-    @JoinColumn(name = "Flight_id", nullable = false) // Clave foránea
+    @JoinColumn(name = "flight_id", nullable = false) // Clave foránea
     @JsonIgnore
     private Flight flight;
 

@@ -25,9 +25,9 @@ public class ControladorFlight {
         this.serviceFlights.addFlight(flight);
     }
 
-    @PutMapping("/suspicious")
+    @GetMapping("/suspicious")
     public List<FlightDTO> getSuspiciousFlights() {
-        return this.serviceFlights.getFlightSuspicius();
+        return this.serviceFlights.getFlightSuspicious();
     }
 
     @DeleteMapping("/{id}")

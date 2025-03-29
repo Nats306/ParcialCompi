@@ -33,7 +33,7 @@ public class Flight {
 
 
 
-    @OneToMany(mappedBy = "flight_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<SecurityReport> reportes;
 
