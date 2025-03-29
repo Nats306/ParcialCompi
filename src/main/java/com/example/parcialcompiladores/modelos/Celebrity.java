@@ -20,20 +20,17 @@ public class Celebrity {
     @Getter
     @Setter
     private String id;
-    @NotNull(message = "El tipo de id no puede ser nulo")
     @Getter
     @Setter
     @Enumerated(EnumType.STRING)
     private TipoID tipoId;
-    @NotBlank(message = "El nombre no puede estar vacío")
+
     @Getter
     @Setter
     private String name;
-    @NotBlank(message = "La profesion no puede estar vacía")
     @Getter
     @Setter
     private String profession;
-    @Min(value = 0, message = "El capital neto no puede ser negativo")
     @Getter
     @Setter
     private double netWorth;

@@ -1,11 +1,12 @@
 package com.example.parcialcompiladores.controllers;
 
-import com.example.parcialcompiladores.modelos.Celebrity;
+import com.example.parcialcompiladores.DTO.PrivateJetDTO;
 import com.example.parcialcompiladores.modelos.PrivateJet;
-import com.example.parcialcompiladores.service.IServiceCelebrity;
 import com.example.parcialcompiladores.service.IServicePrivateJet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/jets")
@@ -14,17 +15,17 @@ public class ControladorPrivateJet {
     private IServicePrivateJet servicePrivateJet;
 
     @GetMapping("/{id}")
-    public PrivateJet buscar(@PathVariable String id) {
+    public Optional<PrivateJetDTO> buscar(@PathVariable String id) {
         return this.servicePrivateJet.getJetById(id);
     }
 
     @PostMapping("/")
-    public void add(@RequestBody PrivateJet jet) {
+    public void add(@RequestBody PrivateJetDTO jet) {
         this.servicePrivateJet.addJet(jet);
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable String id, @RequestBody PrivateJet jet) {
+    public void update(@PathVariable String id, @RequestBody PrivateJetDTO jet) {
         this.servicePrivateJet.updateJet(id,jet);
     }
 

@@ -16,11 +16,9 @@ public class SecurityReport {
     @Getter
     @Setter
     private String id;
-    @NotBlank(message = "Se debe poner quien hizo el reporte")
     @Getter
     @Setter
     private String reported_by;
-    @NotBlank(message = "La descripción no puede ser nula")
     @Getter
     @Setter
     private String description;
@@ -31,6 +29,6 @@ public class SecurityReport {
     @ManyToOne(fetch = FetchType.LAZY) //un vuelo puede tener varios problemas
     @JoinColumn(name = "Flight_id", nullable = false) // Clave foránea
     @JsonIgnore
-    private Flight flight_id;
+    private Flight flight;
 
 }

@@ -18,19 +18,15 @@ public class Flight {
     @Getter
     @Setter
     private String id;
-    @NotBlank(message = "El aeropuerto de despegada no puede estar vació")
     @Getter
     @Setter
     private String departure_airport;
-    @NotBlank(message = "El aeropuerto destino no puede estar vacío")
     @Getter
     @Setter
     private String arrival_airport;
-    @NotBlank(message = "El tiempo de salida no puede estar vacío")
     @Getter
     @Setter
     private String departure_time;
-    @NotBlank(message = "El tiempo de llegada no puede estar vacío")
     @Getter
     @Setter
     private String arrival_time;
@@ -44,12 +40,12 @@ public class Flight {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "celebrity_id", nullable = false)
     @JsonIgnore
-    private Celebrity celebrity_id;
+    private Celebrity celebrity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "jet_id", nullable = false)
     @JsonIgnore
-    private PrivateJet jet_id;
+    private PrivateJet jet;
 
     @Enumerated(EnumType.STRING)
     private Purpose purpose;

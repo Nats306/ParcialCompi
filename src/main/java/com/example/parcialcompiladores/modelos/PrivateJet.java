@@ -20,12 +20,10 @@ public class PrivateJet {
     @Getter
     @Setter
     private String id;
-    @NotBlank(message = "El modelo del jet privado no puese estar vacío")
+
     @Getter
     @Setter
     private String model;
-    @NotNull(message = "La capacidad del jet privado no puede ser nula")
-    @Min(value = 0, message = "La capacidad no puede ser negativa")
     @Getter
     @Setter
     private Integer capacity;
@@ -33,7 +31,7 @@ public class PrivateJet {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", nullable = false) // Clave foránea
     @JsonIgnore
-    private Celebrity owner_id;
+    private Celebrity owner;
 
     @OneToMany(mappedBy = "jet_id", cascade = CascadeType.ALL, orphanRemoval = false)
     @JsonIgnore

@@ -17,16 +17,12 @@ public class Airport {
     @Getter
     @Setter
     private String id;
-    @NotBlank(message = "El nombre no puede estar vacío")
     @Getter
     @Setter
     private String name;
-    @NotBlank(message = "La locación no puede estar vacía")
     @Getter
     @Setter
     private String location;
-    @NotNull(message = "Capacity cannot be null")
-    @Min(value = 0, message = "La capacidad no puede ser negativa")
     @Getter
     @Setter
     private Integer capacity;

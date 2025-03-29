@@ -1,8 +1,7 @@
 package com.example.parcialcompiladores.controllers;
 
-import com.example.parcialcompiladores.modelos.PrivateJet;
+import com.example.parcialcompiladores.DTO.SecurityReportDTO;
 import com.example.parcialcompiladores.modelos.SecurityReport;
-import com.example.parcialcompiladores.service.IServicePrivateJet;
 import com.example.parcialcompiladores.service.IServiceSecurityReport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +15,12 @@ public class ControladorSecurityReport {
     private IServiceSecurityReport serviceSecurityReport;
 
     @GetMapping("/unresolved")
-    public List<SecurityReport> buscar() {
+    public List<SecurityReportDTO> buscar() {
         return this.serviceSecurityReport.getReportByUnresolved();
     }
 
     @PostMapping("/")
-    public void add(@RequestBody SecurityReport securityReport) {
+    public void add(@RequestBody SecurityReportDTO securityReport) {
         this.serviceSecurityReport.addSecurityReport(securityReport);
     }
 

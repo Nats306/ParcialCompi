@@ -1,10 +1,14 @@
 package com.example.parcialcompiladores.service;
 
+import com.example.parcialcompiladores.DTO.CelebrityDTO;
 import com.example.parcialcompiladores.modelos.Celebrity;
 import com.example.parcialcompiladores.repositories.ICelebrityRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+
+import java.util.Optional;
 
 @Service
 @Validated
@@ -12,30 +16,55 @@ public class CelebrityService implements IServiceCelebrity {
     @Autowired
     private ICelebrityRepository celebrityRepository;
 
-    @Override
-    public void addCelebrity(Celebrity celebrity) {
-        this.celebrityRepository.save(celebrity);
+    private CelebrityDTO convertCelebToDTO(Celebrity celebrity) {
+        return new CelebrityDTO(celebrity.getId(),
+                celebrity.getTipoId(),
+                celebrity.getName(),
+                celebrity.getProfession(),
+                celebrity.getNetWorth(),
+                celebrity.isSuspicious()
+        );
     }
+
+
     @Override
-    public Celebrity getCelebrityById(String id){
-        return this.celebrityRepository.findById(id).orElse(null);
+    public void addCelebrity(@Valid CelebrityDTO celebrityDTO) {
+        Celebrity celebrity = new Celebrity();
+        celebrity.setId(celebrityDTO.getId());
+        celebrity.setName(celebrityDTO.getName());
+        celebrity.setTipoId(celebrityDTO.getTipoId());
+        celebrity.setProfession(celebrityDTO.getProfession());
+        celebrity.setNetWorth(celebrityDTO.getNetWorth());
+        celebrity.setSuspicious(celebrityDTO.isSuspicious());
+
+        celebrity = celebrityRepository.save(celebrity);
+
     }
 
     @Override
-    public void updateCelebrity(String id, Celebrity updatedCelebrity){
-        Celebrity previousCelebrity = this.celebrityRepository.findById(id).orElse(null);
-        if(previousCelebrity != null){
-            previousCelebrity.setName(updatedCelebrity.getName());
-            previousCelebrity.setProfession(updatedCelebrity.getProfession());
-            previousCelebrity.setNetWorth(updatedCelebrity.getNetWorth());
-            previousCelebrity.setSuspicious(updatedCelebrity.isSuspicious());
+    public Optional<CelebrityDTO> getCelebrityById(String id) {
+        return celebrityRepository.findById(id).map(this::convertCelebToDTO);
+    }
+
+    @Override
+    public void updateCelebrity(String id,@Valid CelebrityDTO celebrity) {
+        Optional<Celebrity> celebrityEncontrado = celebrityRepository.findById(id);
+
+        if (celebrityEncontrado.isPresent()) {
+
+            celebrityEncontrado.get().setName(celebrity.getName());
+            celebrityEncontrado.get().setTipoId(celebrity.getTipoId());
+            celebrityEncontrado.get().setProfession(celebrity.getProfession());
+            celebrityEncontrado.get().setNetWorth(celebrity.getNetWorth());
+            celebrityEncontrado.get().setSuspicious(celebrity.isSuspicious());
+
+            celebrityRepository.save(celebrityEncontrado.get());
+
         }
-
-        this.celebrityRepository.save(previousCelebrity);
     }
 
     @Override
     public void deleteCelebrityById(String id) {
-        this.celebrityRepository.deleteById(id);
+        celebrityRepository.deleteById(id);
     }
 }
